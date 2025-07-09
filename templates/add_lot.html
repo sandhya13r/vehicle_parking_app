@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+
+<div class="container my-5">
+    <h2 class="mb-4">Add New Parking Lot</h2>
+
+    <form method="POST" action="{{ url_for('add_lot') }}">
+        <div class="mb-3">
+            <label for="prime_location" class="form-label">Prime Location Name</label>
+            <input type="text" class="form-control" id="prime_location" name="prime_location" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="pincode" class="form-label">Pincode</label>
+            <input type="text" class="form-control" id="pincode" name="pincode" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="price_per_hour" class="form-label">Price per Hour (₹)</label>
+            <input type="number" class="form-control" id="price_per_hour" name="price_per_hour" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="max_spots" class="form-label">Number of Spots</label>
+            <input type="number" class="form-control" id="max_spots" name="max_spots" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Lot</button>
+    </form>
+</div>
+
+{% endblock %}

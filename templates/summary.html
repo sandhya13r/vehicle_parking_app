@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}Parking Summary{% endblock %}
+
+{% block content %}
+<div class="chart-box">
+    <h3 class="text-center">Parking Spot Summary</h3>
+
+    <canvas id="donutChart" width="350" height="350"></canvas>
+
+    <div class="summary-text mt-3">
+        <p><strong>Available:</strong> {{ av }}</p>
+        <p><strong>Occupied:</strong> {{ occ }}</p>
+        <p><strong>Total:</strong> {{ av+occ }}</p>
+    </div>
+</div>
+
+<style>
+    .chart-box {
+        max-width: 450px;
+        margin: 40px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    #donutChart {
+        margin: 0 auto;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('donutChart').getContext('2d');
+    const summaryChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Available', 'Occupied'],
+            datasets: [{
+                label: 'Parking Spots',
+                data: [{{ av }}, {{ occ }}],
+                backgroundColor: [
+                    '#28a745', 
+                    '#dc3545'  
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            cutout: '70%',
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

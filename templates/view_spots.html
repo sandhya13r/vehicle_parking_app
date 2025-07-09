@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}View Spots{% endblock %}
+{% block content %}
+
+<h2 class="text-center mb-4">Spots for {{ lot.prime_location }}</h2>
+
+<table class="table table-bordered table-hover bg-white">
+    <thead class="table-dark">
+        <tr>
+            <th>Spot ID</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for spot in spots %}
+        <tr>
+            <td>{{ spot.id }}</td>
+            <td>
+                {% if spot.status == 'A' %}
+                    <span class="badge bg-success">Available</span>
+                {% else %}
+                    <span class="badge bg-danger">Occupied</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary mt-3">← Back to Dashboard</a>
+
+{% endblock %}
