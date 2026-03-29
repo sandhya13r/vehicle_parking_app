@@ -38,3 +38,10 @@ A full-stack web application to manage parking lots and spot reservations. Built
 
 ```bash
 git clone https://github.com/sandhya13r/vehicle_parking_app.git
+```
+### 2. Run in terminal
+
+```bash
+python app.py
+```
+
